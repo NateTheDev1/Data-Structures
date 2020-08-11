@@ -12,7 +12,7 @@ class ListNode:
         self.next = value
             
     def get_next(self):
-        return self.next.get_value()
+        return self.next
     
     def get_value(self):
         return self.value
@@ -21,7 +21,7 @@ class ListNode:
         self.prev = value
     
     def get_prev(self):
-        return self.prev.get_value()
+        return self.prev
 """
 Our doubly-linked list class. It holds references to 
 the list's head and tail nodes.
@@ -63,7 +63,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_head(self):
-        pass
+        head = self.head.get_value()
+        self.delete(self.head)
+        return head
             
     """
     Wraps the given value in a ListNode and inserts it 
@@ -90,7 +92,9 @@ class DoublyLinkedList:
     Returns the value of the removed Node.
     """
     def remove_from_tail(self):
-        pass
+        tail = self.tail.get_value()
+        self.delete(self.tail)
+        return tail
             
     """
     Removes the input node from its current spot in the 
@@ -111,22 +115,39 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        self.length = self.length - 1
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+        elif node == self.head:
+            newHead = self.head.next
+            newHead.set_next(self.head.next)
+            self.head = newHead
+        elif node == self.tail:
+            newTail = self.tail.prev
+            newTail.set_next(self.tail.next)
+            self.tail = newTail
 
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
     """
     def get_max(self):
-        pass
+        if self.head and self.tail is None:
+            return None
+        
+        maxVal = self.head.get_value()
+        curNode = self.head
+        for i in range(self.length):
+            if curNode.get_value() > maxVal:
+                maxVal = curNode.get_value()
+            curNode = curNode.get_next()
+        return maxVal
 
 dll = DoublyLinkedList()
 
-dll.add_to_head(1)
-dll.add_to_head(2)
-dll.add_to_tail(3)
+dll.add_to_tail(100)
+dll.add_to_tail(55)
+dll.add_to_tail(101)
 
-print(dll.head.get_value())
-print(dll.head.get_next())
-print(dll.tail.get_value())
-print(dll.tail.get_prev())
+print(dll.get_max())
