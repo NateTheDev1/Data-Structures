@@ -121,13 +121,20 @@ class DoublyLinkedList:
             self.tail = None
         elif node == self.head:
             newHead = self.head.next
-            newHead.set_next(self.head.next)
+            if newHead.prev:
+                newHead.prev.set_next(self.head.next)
+            if newHead.next:
+                newHead.next.set_prev(self.head.prev)
             self.head = newHead
+            print(newHead.get_value())
         elif node == self.tail:
             newTail = self.tail.prev
-            newTail.set_next(self.tail.next)
+            if newHead.prev:
+                newTail.prev.set_next(self.tail.next)
+            if newHead.next:
+                newTail.next.set_prev(self.tail.prev)
             self.tail = newTail
-
+        
     """
     Finds and returns the maximum value of all the nodes 
     in the List.
@@ -146,8 +153,14 @@ class DoublyLinkedList:
 
 dll = DoublyLinkedList()
 
-dll.add_to_tail(100)
-dll.add_to_tail(55)
-dll.add_to_tail(101)
+dll.add_to_tail(1)
 
-print(dll.get_max())
+dll.add_to_head(9)
+dll.add_to_tail(6)
+dll.add_to_tail(6)
+
+dll.delete(dll.head)
+
+dll.delete(dll.head)
+
+
