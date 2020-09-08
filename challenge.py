@@ -1,8 +1,11 @@
-li = ["Joe", "2", "Ted", "4.98", "14", "Sam", "void *", "42", "float", "pointers", "5006"]
-li2 = ['Bob', 'Slack', ['reddit', '89', 101, ['alacritty', '(brackets)', 5, 375]], 0, ['{slice, owned}'], 22]
+"""
+Print out each element of the following array on a separate line:
 
-# for i in li:
-#     print(i)
+You may use whatever programming language you'd like.
+Verbalize your thought process as much as possible before writing any code. Run through the UPER problem solving framework while going through your thought process.
+"""
 
-for i in li2:
-    print(i)
+lis = ["Joe", "2", "Ted", "4.98", "14", "Sam", "void *", "42", "float", "pointers", "5006"]
+
+for i in lis:
+    print(f"{i}\n")

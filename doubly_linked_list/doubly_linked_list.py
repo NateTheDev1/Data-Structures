@@ -153,14 +153,5 @@ class DoublyLinkedList:
 
 dll = DoublyLinkedList()
 
-dll.add_to_tail(1)
-
-dll.add_to_head(9)
-dll.add_to_tail(6)
-dll.add_to_tail(6)
-
-dll.delete(dll.head)
-
-dll.delete(dll.head)
 
 
